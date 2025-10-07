@@ -109,9 +109,9 @@ Observações:
 - Os **limites do tipo Integer.MIN_VALUE e Integer.MAX_VALUE** testam o comportamento em overflow.
 
 
-- **Partição Positivos**: `soma(5, 3)`
-- **Partição Negativos**: `soma(-2, -3)`
-- **Partição Mista**: `soma(5, -3)`
+**Partições Válidas**: Partição Positivos: `soma(5, 3)`
+Partição Negativos: `soma(-2, -3)`
+Partição Mista: `soma(5, -3)`
 
 #### **4.2 Análise do Valor Limite**
 Testamos valores nos limites das partições, onde defeitos são mais prováveis:
