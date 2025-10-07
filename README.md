@@ -86,6 +86,12 @@ Testamos valores nos limites das partições, onde defeitos são mais prováveis
 - Zero exato: `divisao(10, 0)` → Exceção
 - Precisão decimal: `divisao(0.6, 0.2)`
 
+#### **4.3 Grafo de causa e efeito**
+
+<img width="600px" src="docs/grafo-causa-e-efeito.jpg">
+
+---
+
 ### Casos de Teste Implementados
 
 | Operação | Caso de Teste | Técnicas Aplicadas | Causas no Grafo | Efeitos Esperados | Valores de Entrada | Código de Teste |
@@ -121,9 +127,3 @@ void testDivisaoDecimalPrecisao() {
     assertEquals(3, Calculadora.divisao(0.6, 0.2));
 }
 ```
-
-#### **4.3 Grafo de causa e efeito**
-
-<img width="600px" src="docs/grafo-causa-e-efeito.jpg">
-
----
