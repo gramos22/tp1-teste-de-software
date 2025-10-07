@@ -114,4 +114,8 @@ void testDivisaoDecimalPrecisao() {
 }
 ```
 
+#### **4.3 Grafo de causa e efeito**
+
+<img width="600px" src="docs/grafo-causa-e-efeito.jpg">
+
 ---
