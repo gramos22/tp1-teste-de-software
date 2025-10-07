@@ -88,13 +88,21 @@ Testamos valores nos limites das partições, onde defeitos são mais prováveis
 
 ### Casos de Teste Implementados
 
-| Operação | Técnica | Caso de Teste | Valor de Entrada | Resultado Esperado |
-|----------|---------|---------------|------------------|-------------------|
-| Divisão | Particionamento | Divisão normal | (10, 5) | 2 |
-| Divisão | Particionamento | Divisão por zero | (10, 0) | Exception |
-| Divisão | Valor Limite | Precisão decimal | (0.6, 0.2) | 3.0 |
-| Soma | Particionamento | Positivos + Negativos | (5, -3) | 2 |
-| Soma | Valor Limite | Overflow | (MAX_VALUE, MIN_VALUE) | -1 |
+| Operação | Caso de Teste | Técnicas Aplicadas | Causas no Grafo | Efeitos Esperados | Valores de Entrada | Código de Teste |
+|----------|---------------|-------------------|-----------------|------------------|-------------------|----------------|
+| **Soma** | Soma inteiros positivos | Grafo + Particionamento | a,b válidos | resultado = a + b | (10, 5) | `soma(10, 5)` → 15 |
+| **Soma** | Soma inteiros negativos | Grafo + Particionamento | a,b válidos | resultado = a + b | (-2, -3) | `soma(-2, -3)` → -5 |
+| **Soma** | Soma positivo + negativo | Grafo + Particionamento | a,b válidos | resultado = a + b | (5, -3) | `soma(5, -3)` → 2 |
+| **Soma** | Soma valores double | Grafo + Valor Limite | a,b válidos (double) | resultado = a + b | (2.5, 2.0) | `soma(2.5, 2.0)` → 4.5 |
+| **Multiplicação** | Multiplicação básica | Grafo + Particionamento | a,b válidos | resultado = a × b | (4, 5) | `mult(4, 5)` → 20 |
+| **Multiplicação** | Multiplicação por zero | Grafo + Valor Limite | a=0 ou b=0 | resultado = 0 | (10, 0) | `mult(10, 0)` → 0 |
+| **Subtração** | Subtração básica | Grafo + Particionamento | a,b válidos | resultado = a - b | (10, 7) | `sub(10, 7)` → 3 |
+| **Divisão** | Divisão inteira normal | Grafo + Particionamento | a,b válidos, b≠0 | resultado = a ÷ b | (10, 5) | `div(10, 5)` → 2 |
+| **Divisão** | Divisão por zero (int) | Grafo + Valor Limite | b=0 | ArithmeticException | (10, 0) | `div(10, 0)` → Exception |
+| **Divisão** | Divisão double normal | Grafo + Particionamento | a,b válidos (double), b≠0 | resultado = a ÷ b | (5.0, 2.0) | `div(5.0, 2.0)` → 2.5 |
+| **Divisão** | Divisão por zero (double) | Grafo + Valor Limite | b=0.0 | ArithmeticException | (5.0, 0.0) | `div(5.0, 0.0)` → Exception |
+| **Soma** | Soma parametrizada | Grafo + Particionamento | múltiplas combinações | vários resultados | (1,1), (0,0), (-1,-1) | `@ParameterizedTest` |
+| **Valores Extremos** | Soma limites int | Grafo + Valor Limite | a,b extremos | resultado cálculo | (MAX_VALUE, MIN_VALUE) | `soma(MAX, MIN)` → -1 |
 
 ### Exemplo de Mapeamento para Código
 
