@@ -87,9 +87,9 @@ Observações:
 - O **numerador = 0** testa o caso de borda onde o resultado deve ser exatamente 0.
 
 
-- **Partição Válida**: Denominador ≠ 0 → `divisao(10, 2)`
-- **Partição Inválida**: Denominador = 0 → `divisao(10, 0)` → Exceção esperada
-- **Caso Especial**: Numerador = 0 → `divisao(0, 5)`
+**Partição Válida**: Denominador ≠ 0 → `divisao(10, 2)`
+**Partição Inválida**: Denominador = 0 → `divisao(10, 0)` → Exceção esperada
+**Caso Especial**: Numerador = 0 → `divisao(0, 5)`
 
 **Operação de Soma:**
 **Partições de Equivalência:**
