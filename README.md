@@ -69,11 +69,46 @@ O JUnit 5 suporta múltiplas técnicas de teste:
 Dividimos o domínio de entrada em partições onde elementos da mesma classe revelam os mesmos defeitos:
 
 **Operação de Divisão:**
+**Partições de Equivalência:**
+- C1 – Denominador ≠ 0 → divisão válida
+- C2 – Denominador = 0 → exceção esperada
+- C3 – Numerador = 0 → caso especial (resultado = 0)
+
+**Valores de Fronteira:**
+| Partição | Limite Inferior | Limite Superior | Exemplos de Teste |
+|-----------|-----------------|-----------------|-------------------|
+| C1 (Denominador ≠ 0) | b = ±1 (vizinhos do zero) | b = 2.147.483.647 | divisao(10, 1), divisao(10, -1), divisao(1, Integer.MAX_VALUE) |
+| C2 (Denominador = 0) | b = 0 | b = 0 | divisao(10, 0), divisao(-5, 0) |
+| C3 (Numerador = 0) | a = 0 | a = 0 | divisao(0, 1), divisao(0, -5) |
+
+Observações:
+- O **denominador = 0** é o limite crítico da partição inválida (gera exceção).
+- **Denominadores ±1** são limites imediatos da zona inválida (valores válidos mínimos).
+- O **numerador = 0** testa o caso de borda onde o resultado deve ser exatamente 0.
+
+
 - **Partição Válida**: Denominador ≠ 0 → `divisao(10, 2)`
 - **Partição Inválida**: Denominador = 0 → `divisao(10, 0)` → Exceção esperada
 - **Caso Especial**: Numerador = 0 → `divisao(0, 5)`
 
 **Operação de Soma:**
+**Partições de Equivalência:**
+- C1 – Ambos positivos
+- C2 – Ambos negativos
+- C3 – Mistos (um positivo, outro negativo)
+
+**Valores de Fronteira:**
+| Partição | Limite Inferior | Limite Superior | Exemplos de Teste |
+|-----------|-----------------|-----------------|-------------------|
+| C1 (Positivos) | 0 e 1 | 2.147.483.647 | soma(0, 1), soma(1, 1), soma(Integer.MAX_VALUE, 1) |
+| C2 (Negativos) | -2.147.483.648 | -1 e 0 |  soma(-1, -1), soma(-1, 0), soma(Integer.MIN_VALUE, -1) |
+| C3 (Mista) | -2.147.483.648 | 2.147.483.647 | soma(-1, 1), soma(1, -1), soma(0, -1) |
+
+Observações:
+- O **valor 0** é o limite entre números negativos e positivos.
+- Os **limites do tipo Integer.MIN_VALUE e Integer.MAX_VALUE** testam o comportamento em overflow.
+
+
 - **Partição Positivos**: `soma(5, 3)`
 - **Partição Negativos**: `soma(-2, -3)`
 - **Partição Mista**: `soma(5, -3)`
